@@ -296,3 +296,1518 @@ body {
         padding: 40px var(--spacing-sm);
     } */
 }
+
+/* ========================================= */
+/* VARIÁVEIS GLOBAIS (ADICIONE NO TOPO DO SEU STYLE.CSS) */
+/* ========================================= */
+:root {
+    --background-dark: #3E3D3C; /* Cinza escuro */
+    --text-light: #FAF8F3;     /* Branco creme */
+    --margin-sides: 140px;     /* Margens laterais recomendadas */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+    --font-primary: 'Roboto', sans-serif; /* Ou 'Helvetica Neue', sans-serif se tiver embutida */
+    --font-secondary: 'Inter', sans-serif; /* Ou 'Helvetica Neue Bold', sans-serif */
+}
+
+/* Base body style (existing, ensure it uses variables) */
+body {
+    font-family: var(--font-primary);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: var(--background-dark); /* Default background */
+    color: var(--text-light); /* Default text color */
+}
+
+/* Header and Navbar (existing, adjust to use variables) */
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(62, 61, 60, 0.9); /* Cinza escuro com transparência */
+    color: var(--text-light);
+    z-index: 1000;
+    backdrop-filter: blur(5px); /* Efeito de blur para o header */
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px var(--margin-sides); /* Mantém as margens laterais */
+    max-width: 1920px; /* Garante que o conteúdo não exceda a largura */
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: var(--font-secondary); /* Fonte para o logo */
+    font-weight: 700;
+    font-size: 1.8em;
+    color: var(--text-light);
+    text-transform: uppercase;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 40px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Evita quebra de linha em menus */
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* Hamburguer Menu (existing for mobile) */
+.hamburger-menu {
+    display: none; /* Hidden by default for desktop */
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    z-index: 1100;
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+/* Main Content Area (existing, ensure it uses margins) */
+main {
+    padding-top: 100px; /* Adjust based on header height */
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+/* Footer (existing, ensure it uses variables) */
+.footer {
+    background-color: var(--background-dark);
+    color: rgba(250, 248, 243, 0.7);
+    text-align: center;
+    padding: 30px var(--margin-sides);
+    font-size: 0.9em;
+    font-family: var(--font-primary);
+}
+
+
+/* ========================================= */
+/* NOVOS ESTILOS PARA MENU DROPDOWN E PÁGINAS DE PORTFÓLIO */
+/* ========================================= */
+
+/* --- Estilos para o Menu Dropdown --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    background-color: var(--background-dark); /* Mesma cor do header */
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding-top: 10px; /* Espaço entre o botão e o dropdown */
+    left: 50%; /* Centraliza o dropdown no item pai */
+    transform: translateX(-50%); /* Ajuste fino para centralização */
+    border-top: 2px solid var(--text-light); /* Linha fina de destaque */
+}
+
+.dropdown-content a {
+    color: var(--text-light);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 16px; /* Ajuste para o tamanho dos submenus */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(250, 248, 243, 0.1); /* Um leve destaque no hover */
+    text-decoration: none; /* Remove sublinhado do hover do pai */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Mostra o menu suspenso no hover */
+}
+
+/* Ajuste para o link ativo do menu principal, se estiver na página de portfólio */
+.navbar .nav-links .dropdown .dropbtn.active {
+    text-decoration: underline;
+}
+
+/* --- Tema de Cor Clara para Conteúdo (Body com .light-theme) --- */
+body.light-theme {
+    background-color: var(--text-light); /* Fundo claro */
+    color: var(--background-dark);     /* Texto escuro */
+}
+
+/* Ajustes para o header e footer no tema claro (manterão o tema escuro) */
+body.light-theme .header {
+    background-color: rgba(62, 61, 60, 0.9); /* Header continua escuro */
+    color: var(--text-light);
+}
+
+body.light-theme .header .nav-links a {
+    color: var(--text-light);
+}
+
+body.light-theme .header .nav-links a:hover,
+body.light-theme .header .nav-links a.active {
+    text-decoration: underline;
+}
+
+body.light-theme .logo {
+    color: var(--text-light);
+}
+
+body.light-theme .footer {
+    background-color: var(--background-dark);
+    color: rgba(250, 248, 243, 0.7);
+}
+
+
+/* --- Estilos para logotipos-id-visual.html (Galeria de Visão Geral) --- */
+.portfolio-main {
+    padding: 100px var(--margin-sides) var(--spacing-lg); /* Top padding to clear fixed header */
+    max-width: 1920px; /* Max width for content */
+    margin: 0 auto;
+}
+
+.project-header {
+    text-align: left;
+    margin-bottom: var(--spacing-lg);
+    padding-left: var(--spacing-sm); /* Pequeno ajuste visual */
+}
+
+.project-title {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: clamp(2.5em, 5vw, 4em); /* Grande */
+    color: var(--background-dark); /* Preto */
+    margin-bottom: 5px;
+}
+
+.project-subtitle {
+    font-family: var(--font-primary);
+    font-size: clamp(1em, 2vw, 1.5em);
+    color: var(--background-dark); /* Preto */
+    opacity: 0.8;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: var(--spacing-md); /* Espaço entre as imagens */
+    max-width: 1508px; /* Largura total das imagens */
+    margin: 0 auto; /* Centraliza a grade */
+    padding: 0 var(--spacing-sm); /* Padding interno para telas menores */
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro transparente */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinhado ao topo */
+    align-items: flex-start; /* Alinhado à esquerda */
+    padding: var(--spacing-md);
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1; /* Fica visível no hover */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05); /* Leve zoom na imagem no hover */
+    filter: brightness(0.7); /* Escurece a imagem por baixo */
+}
+
+.overlay-title {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: clamp(1.2em, 2.5vw, 1.8em);
+    margin-bottom: 5px;
+}
+
+.overlay-text {
+    font-family: var(--font-primary);
+    font-size: clamp(0.9em, 1.5vw, 1.1em);
+}
+
+.load-more-projects {
+    text-align: center;
+    margin-top: var(--spacing-lg); /* Espaçamento abaixo da galeria */
+}
+
+.load-more-link {
+    display: inline-block;
+    color: var(--background-dark); /* Texto preto */
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: 2px solid var(--background-dark);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.load-more-link:hover {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+
+/* --- Estilos para projeto.html (Páginas de Detalhes do Projeto) --- */
+.project-detail-main {
+    padding-top: 100px; /* Espaço para o header fixo */
+    background-color: var(--text-light); /* Fundo claro para o conteúdo do projeto */
+    color: var(--background-dark); /* Texto escuro */
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.project-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--spacing-lg) var(--margin-sides) var(--spacing-md);
+    max-width: 1920px; /* Garante que o conteúdo não exceda a largura */
+    margin: 0 auto;
+}
+
+.project-titles {
+    text-align: left;
+}
+
+.project-page-title {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: clamp(3em, 6vw, 5em); /* Fonte grande */
+    color: var(--background-dark); /* Preto */
+    margin-bottom: 5px;
+}
+
+.project-page-subtitle {
+    font-family: var(--font-primary);
+    font-size: clamp(1.2em, 2.5vw, 1.8em);
+    color: var(--background-dark); /* Preto */
+    opacity: 0.8;
+}
+
+.project-info-link .info-link {
+    color: var(--background-dark); /* Preto */
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.2em;
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+    transition: opacity 0.3s ease;
+}
+
+.project-info-link .info-link:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.project-gallery-details {
+    padding: 0; /* Remover padding padrão, pois as imagens são full-width */
+    margin-bottom: var(--spacing-lg);
+}
+
+.gallery-full-width {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as imagens se quebrem em novas linhas */
+    gap: 0; /* Remove margens entre as imagens */
+    max-width: 1508px; /* Largura total da galeria */
+    margin: 0 auto;
+}
+
+.gallery-full-width img {
+    width: 100%; /* Cada imagem ocupa 100% da largura do contêiner pai */
+    height: auto;
+    display: block;
+    cursor: zoom-in; /* Indica que é clicável para expandir */
+}
+
+/* --- Seção de Informações do Projeto (3 Colunas) --- */
+.project-info-section {
+    display: grid;
+    grid-template-columns: 30% 20% 50%; /* Distribuição das colunas */
+    gap: var(--spacing-md); /* Espaçamento entre colunas */
+    padding: var(--spacing-lg) var(--margin-sides); /* Padding na seção */
+    max-width: 1920px; /* Garante que o conteúdo não exceda a largura */
+    margin: 0 auto;
+    box-sizing: border-box; /* Garante que padding não adicione largura extra */
+}
+
+.info-column {
+    /* Basic styling for columns if needed */
+}
+
+.project-name-info {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: clamp(2em, 3vw, 2.5em); /* Fonte grande */
+    color: var(--background-dark);
+    margin-bottom: 5px;
+}
+
+.project-subtitle-info {
+    font-family: var(--font-primary);
+    font-size: clamp(1em, 1.5vw, 1.2em);
+    color: var(--background-dark);
+    opacity: 0.8;
+}
+
+.what-i-did-col {
+    padding-top: 30px; /* Margem da segunda coluna */
+}
+
+.info-category-title {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.1em; /* Fonte média */
+    color: var(--background-dark);
+    margin-bottom: 10px;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-list li {
+    font-family: var(--font-primary);
+    font-size: 0.9em; /* Fonte menor */
+    color: var(--background-dark);
+    margin-bottom: 5px;
+}
+
+.fixed-info-title {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: clamp(1.2em, 2vw, 1.5em); /* Menor que o nome do projeto, mas maior que os subtítulos */
+    color: var(--background-dark);
+    margin-bottom: var(--spacing-md); /* Espaço antes das categorias */
+}
+
+.info-category-subtitle {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.1em; /* Fonte média */
+    color: var(--background-dark);
+    margin-top: var(--spacing-md); /* Espaçamento entre categorias */
+    margin-bottom: 10px;
+}
+
+.info-text {
+    font-family: var(--font-primary);
+    font-size: 0.9em; /* Fonte menor */
+    color: var(--background-dark);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.8; /* Aumenta o espaçamento entre linhas */
+}
+
+/* --- Próximo Projeto Link --- */
+.next-project-section {
+    text-align: center;
+    padding: var(--spacing-lg) var(--margin-sides) 80px; /* Padding abaixo */
+}
+
+.next-project-link {
+    display: inline-block;
+    color: var(--background-dark);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: 2px solid var(--background-dark);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.next-project-link:hover {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+/* --- Lightbox / Galeria Slide --- */
+.lightbox {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    padding-top: 60px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh; /* Para garantir que caiba na tela */
+    object-fit: contain; /* Garante que a imagem inteira seja visível */
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.prev-arrow, .next-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    opacity: 0.6; /* Transparente */
+}
+
+.next-arrow {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-arrow {
+    left: 0;
+}
+
+.prev-arrow:hover, .next-arrow:hover {
+    background-color: rgba(0,0,0,0.8);
+    opacity: 1;
+}
+
+
+/* ========================================= */
+/* RESPONSIVIDADE (MEDIA QUERIES) - AJUSTES PARA AS NOVAS SEÇÕES */
+/* ========================================= */
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 20px var(--spacing-md); /* Ajusta padding em telas menores */
+    }
+
+    /* Hambuger menu on tablets and mobiles */
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none; /* Hide by default on smaller screens */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 65px; /* Adjust based on header height */
+        left: 0;
+        background-color: rgba(62, 61, 60, 0.95); /* Semi-transparent background for menu */
+        padding: 20px 0;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        max-height: calc(100vh - 65px); /* Ensure menu doesn't overflow screen */
+        overflow-y: auto;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-links li {
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 15px 0;
+        display: block;
+    }
+
+    /* Adjustments for dropdown within mobile menu */
+    .dropdown {
+        width: 100%; /* Para preencher a largura no menu mobile */
+    }
+    .dropdown .dropbtn {
+        width: 100%;
+        display: block; /* Garante que o botão de dropdown ocupe a largura total */
+    }
+    .dropdown-content {
+        position: relative; /* Ajusta para dentro do fluxo do menu mobile */
+        box-shadow: none;
+        border-top: none;
+        width: 100%;
+        padding-top: 0; /* Remove padding extra no topo do dropdown mobile */
+        left: 0;
+        transform: translateX(0); /* Remove centralização */
+    }
+    .dropdown-content a {
+        padding-left: 40px; /* Indenta sub-itens para clareza */
+        background-color: rgba(40, 39, 38, 0.9); /* Um pouco mais escuro para sub-itens */
+    }
+
+    /* Galeria de Visão Geral (2 colunas para 1 em telas menores) */
+    .portfolio-main {
+        padding: 100px var(--spacing-md) var(--spacing-lg); /* Ajusta padding para mobile */
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+        gap: var(--spacing-sm);
+        max-width: 90%; /* Adapta a largura */
+    }
+    .project-header {
+        padding-left: 0; /* Remove padding extra no mobile */
+    }
+
+    /* Detalhes do Projeto (3 colunas para 1 em telas menores) */
+    .project-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+    }
+    .project-info-link {
+        margin-top: var(--spacing-md);
+    }
+
+    .project-info-section {
+        grid-template-columns: 1fr; /* Uma coluna */
+        padding: var(--spacing-md);
+    }
+
+    .what-i-did-col {
+        padding-top: var(--spacing-md); /* Ajuste de espaçamento */
+    }
+
+    .fixed-info-title {
+        margin-top: var(--spacing-md); /* Garante espaçamento se a coluna anterior for menor */
+    }
+
+    .next-project-section {
+        padding: var(--spacing-md) var(--spacing-md) 50px;
+    }
+
+    .lightbox-content {
+        padding-top: 80px; /* Espaço para o botão de fechar */
+    }
+
+    .prev-arrow, .next-arrow {
+        top: 55%; /* Ajusta posição das setas em mobile */
+        padding: 10px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-page-title {
+        font-size: clamp(2.5em, 8vw, 4em);
+    }
+    .project-page-subtitle {
+        font-size: clamp(1em, 2vw, 1.5em);
+    }
+    .info-link {
+        font-size: 1em;
+    }
+    .project-info-section {
+        padding: var(--spacing-sm);
+    }
+    .project-name-info, .info-category-title, .fixed-info-title, .info-category-subtitle {
+        font-size: clamp(1.2em, 3.5vw, 2em);
+    }
+    .info-list li, .info-text {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 15px var(--spacing-sm);
+    }
+    .logo {
+        font-size: 1.5em;
+    }
+    .hamburger-menu {
+        padding: 5px;
+    }
+    .nav-links {
+        top: 55px; /* Adjust for smaller header */
+        max-height: calc(100vh - 55px);
+    }
+    .project-title {
+        font-size: clamp(2em, 8vw, 3em);
+    }
+    .project-subtitle {
+        font-size: clamp(0.9em, 2.5vw, 1.2em);
+    }
+    .gallery-item .overlay {
+        padding: var(--spacing-sm);
+    }
+    .overlay-title {
+        font-size: clamp(1em, 3vw, 1.5em);
+    }
+    .overlay-text {
+        font-size: clamp(0.8em, 2vw, 1em);
+    }
+    .load-more-link {
+        font-size: 1em;
+        padding: 8px 15px;
+    }
+    .project-page-title {
+        font-size: clamp(2em, 9vw, 3.5em);
+    }
+    .project-page-subtitle {
+        font-size: clamp(0.9em, 2.5vw, 1.2em);
+    }
+    .info-link {
+        font-size: 0.9em;
+    }
+    .project-info-section {
+        padding: var(--spacing-xs);
+    }
+    .project-name-info, .info-category-title, .fixed-info-title, .info-category-subtitle {
+        font-size: clamp(1em, 4.5vw, 1.8em);
+    }
+    .info-list li, .info-text {
+        font-size: 0.8em;
+    }
+    .next-project-link {
+        font-size: 1em;
+        padding: 8px 15px;
+    }
+    .close-btn {
+        font-size: 30px;
+        right: 20px;
+    }
+    .prev-arrow, .next-arrow {
+        font-size: 16px;
+        margin-top: -30px;
+    }
+}
+/* ========================================= */
+/* VARIÁVEIS GLOBAIS (ADICIONE NO TOPO DO SEU STYLE.CSS) */
+/* ========================================= */
+:root {
+    --background-dark: #3E3D3C; /* Cinza escuro */
+    --text-light: #FAF8F3;     /* Branco creme */
+    --margin-sides: 140px;     /* Margens laterais recomendadas */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+    --font-primary: 'Roboto', sans-serif; /* Ou 'Helvetica Neue', sans-serif se tiver embutida */
+    --font-secondary: 'Inter', sans-serif; /* Ou 'Helvetica Neue Bold', sans-serif */
+}
+
+/* Base body style (existing, ensure it uses variables) */
+body {
+    font-family: var(--font-primary);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: var(--background-dark); /* Default background */
+    color: var(--text-light); /* Default text color */
+}
+
+/* Header and Navbar (existing, adjust to use variables) */
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(62, 61, 60, 0.9); /* Cinza escuro com transparência */
+    color: var(--text-light);
+    z-index: 1000;
+    backdrop-filter: blur(5px); /* Efeito de blur para o header */
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px var(--margin-sides); /* Mantém as margens laterais */
+    max-width: 1920px; /* Garante que o conteúdo não exceda a largura */
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: var(--font-secondary); /* Fonte para o logo */
+    font-weight: 700;
+    font-size: 1.8em;
+    color: var(--text-light);
+    text-transform: uppercase;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 40px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Evita quebra de linha em menus */
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* Hamburguer Menu (existing for mobile) */
+.hamburger-menu {
+    display: none; /* Hidden by default for desktop */
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    z-index: 1100;
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+/* Main Content Area (existing, ensure it uses margins) */
+main {
+    padding-top: 100px; /* Adjust based on header height */
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+/* Footer (existing, ensure it uses variables) */
+.footer {
+    background-color: var(--background-dark);
+    color: rgba(250, 248, 243, 0.7);
+    text-align: center;
+    padding: 30px var(--margin-sides);
+    font-size: 0.9em;
+    font-family: var(--font-primary);
+}
+
+
+/* ========================================= */
+/* NOVOS ESTILOS PARA MENU DROPDOWN E PÁGINAS DE PORTFÓLIO */
+/* ========================================= */
+
+/* --- Estilos para o Menu Dropdown --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    background-color: var(--background-dark); /* Mesma cor do header */
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding-top: 10px; /* Espaço entre o botão e o dropdown */
+    left: 50%; /* Centraliza o dropdown no item pai */
+    transform: translateX(-50%); /* Ajuste fino para centralização */
+    border-top: 2px solid var(--text-light); /* Linha fina de destaque */
+}
+
+.dropdown-content a {
+    color: var(--text-light);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 16px; /* Ajuste para o tamanho dos submenus */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(250, 248, 243, 0.1); /* Um leve destaque no hover */
+    text-decoration: none; /* Remove sublinhado do hover do pai */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Mostra o menu suspenso no hover */
+}
+
+/* Ajuste para o link ativo do menu principal, se estiver na página de portfólio */
+.navbar .nav-links .dropdown .dropbtn.active {
+    text-decoration: underline;
+}
+
+/* --- Tema de Cor Clara para Conteúdo (Body com .light-theme) --- */
+body.light-theme {
+    background-color: var(--text-light); /* Fundo claro */
+    color: var(--background-dark);     /* Texto escuro */
+}
+
+/* Ajustes para o header e footer no tema claro (manterão o tema escuro) */
+body.light-theme .header {
+    background-color: rgba(62, 61, 60, 0.9); /* Header continua escuro */
+    color: var(--text-light);
+}
+
+body.light-theme .header .nav-links a {
+    color: var(--text-light);
+}
+
+body.light-theme .header .nav-links a:hover,
+body.light-theme .header .nav-links a.active {
+    text-decoration: underline;
+}
+
+body.light-theme .logo {
+    color: var(--text-light);
+}
+
+body.light-theme .footer {
+    background-color: var(--background-dark);
+    color: rgba(250, 248, 243, 0.7);
+}
+
+
+/* --- Estilos para logotipos-id-visual.html (Galeria de Visão Geral) --- */
+.portfolio-main {
+    padding: 100px var(--margin-sides) var(--spacing-lg); /* Top padding to clear fixed header */
+    max-width: 1920px; /* Max width for content */
+    margin: 0 auto;
+}
+
+.project-header {
+    text-align: left;
+    margin-bottom: var(--spacing-lg);
+    padding-left: var(--spacing-sm); /* Pequeno ajuste visual */
+}
+
+.project-title {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: clamp(2.5em, 5vw, 4em); /* Grande */
+    color: var(--background-dark); /* Preto */
+    margin-bottom: 5px;
+}
+
+.project-subtitle {
+    font-family: var(--font-primary);
+    font-size: clamp(1em, 2vw, 1.5em);
+    color: var(--background-dark); /* Preto */
+    opacity: 0.8;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: var(--spacing-md); /* Espaço entre as imagens */
+    max-width: 1508px; /* Largura total das imagens */
+    margin: 0 auto; /* Centraliza a grade */
+    padding: 0 var(--spacing-sm); /* Padding interno para telas menores */
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro transparente */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinhado ao topo */
+    align-items: flex-start; /* Alinhado à esquerda */
+    padding: var(--spacing-md);
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1; /* Fica visível no hover */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05); /* Leve zoom na imagem no hover */
+    filter: brightness(0.7); /* Escurece a imagem por baixo */
+}
+
+.overlay-title {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: clamp(1.2em, 2.5vw, 1.8em);
+    margin-bottom: 5px;
+}
+
+.overlay-text {
+    font-family: var(--font-primary);
+    font-size: clamp(0.9em, 1.5vw, 1.1em);
+}
+
+.load-more-projects {
+    text-align: center;
+    margin-top: var(--spacing-lg); /* Espaçamento abaixo da galeria */
+}
+
+.load-more-link {
+    display: inline-block;
+    color: var(--background-dark); /* Texto preto */
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: 2px solid var(--background-dark);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.load-more-link:hover {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+
+/* --- Estilos para projeto.html (Páginas de Detalhes do Projeto) --- */
+.project-detail-main {
+    padding-top: 100px; /* Espaço para o header fixo */
+    background-color: var(--text-light); /* Fundo claro para o conteúdo do projeto */
+    color: var(--background-dark); /* Texto escuro */
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.project-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--spacing-lg) var(--margin-sides) var(--spacing-md);
+    max-width: 1920px; /* Garante que o conteúdo não exceda a largura */
+    margin: 0 auto;
+}
+
+.project-titles {
+    text-align: left;
+}
+
+.project-page-title {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: clamp(3em, 6vw, 5em); /* Fonte grande */
+    color: var(--background-dark); /* Preto */
+    margin-bottom: 5px;
+}
+
+.project-page-subtitle {
+    font-family: var(--font-primary);
+    font-size: clamp(1.2em, 2.5vw, 1.8em);
+    color: var(--background-dark); /* Preto */
+    opacity: 0.8;
+}
+
+.project-info-link .info-link {
+    color: var(--background-dark); /* Preto */
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.2em;
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+    transition: opacity 0.3s ease;
+}
+
+.project-info-link .info-link:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.project-gallery-details {
+    padding: 0; /* Remover padding padrão, pois as imagens são full-width */
+    margin-bottom: var(--spacing-lg);
+}
+
+.gallery-full-width {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as imagens se quebrem em novas linhas */
+    gap: 0; /* Remove margens entre as imagens */
+    max-width: 1508px; /* Largura total da galeria */
+    margin: 0 auto;
+}
+
+.gallery-full-width img {
+    width: 100%; /* Cada imagem ocupa 100% da largura do contêiner pai */
+    height: auto;
+    display: block;
+    cursor: zoom-in; /* Indica que é clicável para expandir */
+}
+
+/* --- Seção de Informações do Projeto (3 Colunas) --- */
+.project-info-section {
+    display: grid;
+    grid-template-columns: 30% 20% 50%; /* Distribuição das colunas */
+    gap: var(--spacing-md); /* Espaçamento entre colunas */
+    padding: var(--spacing-lg) var(--margin-sides); /* Padding na seção */
+    max-width: 1920px; /* Garante que o conteúdo não exceda a largura */
+    margin: 0 auto;
+    box-sizing: border-box; /* Garante que padding não adicione largura extra */
+}
+
+.info-column {
+    /* Basic styling for columns if needed */
+}
+
+.project-name-info {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: clamp(2em, 3vw, 2.5em); /* Fonte grande */
+    color: var(--background-dark);
+    margin-bottom: 5px;
+}
+
+.project-subtitle-info {
+    font-family: var(--font-primary);
+    font-size: clamp(1em, 1.5vw, 1.2em);
+    color: var(--background-dark);
+    opacity: 0.8;
+}
+
+.what-i-did-col {
+    padding-top: 30px; /* Margem da segunda coluna */
+}
+
+.info-category-title {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.1em; /* Fonte média */
+    color: var(--background-dark);
+    margin-bottom: 10px;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-list li {
+    font-family: var(--font-primary);
+    font-size: 0.9em; /* Fonte menor */
+    color: var(--background-dark);
+    margin-bottom: 5px;
+}
+
+.fixed-info-title {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: clamp(1.2em, 2vw, 1.5em); /* Menor que o nome do projeto, mas maior que os subtítulos */
+    color: var(--background-dark);
+    margin-bottom: var(--spacing-md); /* Espaço antes das categorias */
+}
+
+.info-category-subtitle {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.1em; /* Fonte média */
+    color: var(--background-dark);
+    margin-top: var(--spacing-md); /* Espaçamento entre categorias */
+    margin-bottom: 10px;
+}
+
+.info-text {
+    font-family: var(--font-primary);
+    font-size: 0.9em; /* Fonte menor */
+    color: var(--background-dark);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.8; /* Aumenta o espaçamento entre linhas */
+}
+
+/* --- Próximo Projeto Link --- */
+.next-project-section {
+    text-align: center;
+    padding: var(--spacing-lg) var(--margin-sides) 80px; /* Padding abaixo */
+}
+
+.next-project-link {
+    display: inline-block;
+    color: var(--background-dark);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: 2px solid var(--background-dark);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.next-project-link:hover {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+/* --- Lightbox / Galeria Slide --- */
+.lightbox {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    padding-top: 60px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh; /* Para garantir que caiba na tela */
+    object-fit: contain; /* Garante que a imagem inteira seja visível */
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.prev-arrow, .next-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    opacity: 0.6; /* Transparente */
+}
+
+.next-arrow {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-arrow {
+    left: 0;
+}
+
+.prev-arrow:hover, .next-arrow:hover {
+    background-color: rgba(0,0,0,0.8);
+    opacity: 1;
+}
+
+
+/* ========================================= */
+/* RESPONSIVIDADE (MEDIA QUERIES) - AJUSTES PARA AS NOVAS SEÇÕES */
+/* ========================================= */
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 20px var(--spacing-md); /* Ajusta padding em telas menores */
+    }
+
+    /* Hambuger menu on tablets and mobiles */
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none; /* Hide by default on smaller screens */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 65px; /* Adjust based on header height */
+        left: 0;
+        background-color: rgba(62, 61, 60, 0.95); /* Semi-transparent background for menu */
+        padding: 20px 0;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        max-height: calc(100vh - 65px); /* Ensure menu doesn't overflow screen */
+        overflow-y: auto;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-links li {
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 15px 0;
+        display: block;
+    }
+
+    /* Adjustments for dropdown within mobile menu */
+    .dropdown {
+        width: 100%; /* Para preencher a largura no menu mobile */
+    }
+    .dropdown .dropbtn {
+        width: 100%;
+        display: block; /* Garante que o botão de dropdown ocupe a largura total */
+    }
+    .dropdown-content {
+        position: relative; /* Ajusta para dentro do fluxo do menu mobile */
+        box-shadow: none;
+        border-top: none;
+        width: 100%;
+        padding-top: 0; /* Remove padding extra no topo do dropdown mobile */
+        left: 0;
+        transform: translateX(0); /* Remove centralização */
+    }
+    .dropdown-content a {
+        padding-left: 40px; /* Indenta sub-itens para clareza */
+        background-color: rgba(40, 39, 38, 0.9); /* Um pouco mais escuro para sub-itens */
+    }
+
+    /* Galeria de Visão Geral (2 colunas para 1 em telas menores) */
+    .portfolio-main {
+        padding: 100px var(--spacing-md) var(--spacing-lg); /* Ajusta padding para mobile */
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+        gap: var(--spacing-sm);
+        max-width: 90%; /* Adapta a largura */
+    }
+    .project-header {
+        padding-left: 0; /* Remove padding extra no mobile */
+    }
+
+    /* Detalhes do Projeto (3 colunas para 1 em telas menores) */
+    .project-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+    }
+    .project-info-link {
+        margin-top: var(--spacing-md);
+    }
+
+    .project-info-section {
+        grid-template-columns: 1fr; /* Uma coluna */
+        padding: var(--spacing-md);
+    }
+
+    .what-i-did-col {
+        padding-top: var(--spacing-md); /* Ajuste de espaçamento */
+    }
+
+    .fixed-info-title {
+        margin-top: var(--spacing-md); /* Garante espaçamento se a coluna anterior for menor */
+    }
+
+    .next-project-section {
+        padding: var(--spacing-md) var(--spacing-md) 50px;
+    }
+
+    .lightbox-content {
+        padding-top: 80px; /* Espaço para o botão de fechar */
+    }
+
+    .prev-arrow, .next-arrow {
+        top: 55%; /* Ajusta posição das setas em mobile */
+        padding: 10px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-page-title {
+        font-size: clamp(2.5em, 8vw, 4em);
+    }
+    .project-page-subtitle {
+        font-size: clamp(1em, 2vw, 1.5em);
+    }
+    .info-link {
+        font-size: 1em;
+    }
+    .project-info-section {
+        padding: var(--spacing-sm);
+    }
+    .project-name-info, .info-category-title, .fixed-info-title, .info-category-subtitle {
+        font-size: clamp(1.2em, 3.5vw, 2em);
+    }
+    .info-list li, .info-text {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 15px var(--spacing-sm);
+    }
+    .logo {
+        font-size: 1.5em;
+    }
+    .hamburger-menu {
+        padding: 5px;
+    }
+    .nav-links {
+        top: 55px; /* Adjust for smaller header */
+        max-height: calc(100vh - 55px);
+    }
+    .project-title {
+        font-size: clamp(2em, 8vw, 3em);
+    }
+    .project-subtitle {
+        font-size: clamp(0.9em, 2.5vw, 1.2em);
+    }
+    .gallery-item .overlay {
+        padding: var(--spacing-sm);
+    }
+    .overlay-title {
+        font-size: clamp(1em, 3vw, 1.5em);
+    }
+    .overlay-text {
+        font-size: clamp(0.8em, 2vw, 1em);
+    }
+    .load-more-link {
+        font-size: 1em;
+        padding: 8px 15px;
+    }
+    .project-page-title {
+        font-size: clamp(2em, 9vw, 3.5em);
+    }
+    .project-page-subtitle {
+        font-size: clamp(0.9em, 2.5vw, 1.2em);
+    }
+    .info-link {
+        font-size: 0.9em;
+    }
+    .project-info-section {
+        padding: var(--spacing-xs);
+    }
+    .project-name-info, .info-category-title, .fixed-info-title, .info-category-subtitle {
+        font-size: clamp(1em, 4.5vw, 1.8em);
+    }
+    .info-list li, .info-text {
+        font-size: 0.8em;
+    }
+    .next-project-link {
+        font-size: 1em;
+        padding: 8px 15px;
+    }
+    .close-btn {
+        font-size: 30px;
+        right: 20px;
+    }
+    .prev-arrow, .next-arrow {
+        font-size: 16px;
+        margin-top: -30px;
+    }
+}

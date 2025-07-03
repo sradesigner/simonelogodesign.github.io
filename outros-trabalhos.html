@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simone Logo Design - Portfólio</title>
+    <title>Outros Trabalhos - Simone Logo Design</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="light-theme">
     <header class="header">
         <nav class="navbar">
             <div class="logo">SIMONE</div>
@@ -19,13 +18,13 @@
                 <span class="bar"></span>
             </button>
             <ul class="nav-links">
-                <li><a href="#" class="active">HOME</a></li>
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="#sobre">SOBRE</a></li>
                 <li class="dropdown">
                     <a href="logotipos-id-visual.html" class="dropbtn">TRABALHO ▼</a>
                     <div class="dropdown-content">
                         <a href="logotipos-id-visual.html">Logotipos e ID Visual</a>
-                        <a href="outros-trabalhos.html">Outros</a>
+                        <a href="outros-trabalhos.html" class="active">Outros</a>
                     </div>
                 </li>
                 <li><a href="#loja">LOJA</a></li>
@@ -35,27 +34,22 @@
         </nav>
     </header>
 
-    <main class="home-section">
-        <h1 class="main-message">MAIS QUE LOGOTIPOS.<br>IDENTIDADES.</h1>
-        <p class="subtitle">Crio marcas que falam, conectam e permanecem.</p>
-        <a href="#trabalho" class="cta-button">VER PORTFÓLIO →</a>
+    <main class="portfolio-main">
+        <section class="project-header">
+            <h1 class="project-title">Outros Trabalhos</h1>
+            <p class="project-subtitle">Aqui você encontrará minhas ilustrações, gravuras e pinturas.</p>
+        </section>
+        <section style="padding: 50px var(--margin-sides); text-align: center;">
+            <p style="font-family: var(--font-primary); font-size: 1.2em; color: var(--background-dark);">
+                Conteúdo para "Outros Trabalhos" em desenvolvimento. Volte em breve!
+            </p>
+        </section>
     </main>
 
     <footer class="footer">
         <p>&copy; 2024 Simone Logo Design. Todos os direitos reservados.</p>
     </footer>
 
-    <script>
-        // JavaScript para o menu hambúrguer (funcionalidade básica de toggle)
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const navLinks = document.querySelector('.nav-links');
-
-        if (hamburgerMenu) {
-            hamburgerMenu.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                hamburgerMenu.classList.toggle('active');
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
