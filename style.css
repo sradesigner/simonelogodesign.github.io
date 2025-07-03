@@ -1,0 +1,298 @@
+:root {
+    /* Paleta de Cores */
+    --background-dark: #3E3D3C; /* Cinza escuro */
+    --text-light: #FAF8F3;     /* Branco creme */
+    --accent-color: #6A0DAD;   /* Um tom de roxo para destaque, se necessário, ou manter monocromático */
+
+    /* Tipografia */
+    --font-primary: 'Inter', sans-serif; /* Alternativa para Helvetica Neue */
+    --font-secondary: 'Helvetica Neue', sans-serif; /* Se a fonte for carregada via @font-face */
+
+    /* Espaçamentos */
+    --margin-sides: 140px;
+    --spacing-sm: 16px;
+    --spacing-md: 32px;
+    --spacing-lg: 60px;
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita rolagem horizontal */
+}
+
+/* Header e Navegação */
+.header {
+    width: 100%;
+    position: fixed; /* Menu fixo ao rolar (sticky header) */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgba(62, 61, 60, 0.9); /* Fundo semi-transparente para o sticky header */
+    padding: var(--spacing-sm) var(--margin-sides);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1920px; /* Resolução padrão */
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--text-light);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-md); /* Espaçamento entre os itens (32px) */
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-family: var(--font-secondary);
+    font-size: 18px; /* Tamanho 16-18px */
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    text-decoration: underline; /* Efeito hover/ativo: sublinhado */
+    color: var(--text-light); /* Mantém a cor para monocromático ou use --accent-color; */
+}
+
+/* Menu Hambúrguer (Mobile) */
+.hamburger-menu {
+    display: none; /* Escondido por padrão em desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+/* Seção Home */
+.home-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Altura total da viewport */
+    text-align: center;
+    background-color: black; [cite_start]/* Fundo preto sólido [cite: 18] */
+    padding: 0 var(--margin-sides);
+}
+
+.main-message {
+    font-family: var(--font-secondary);
+    font-weight: 700; /* Negrito */
+    font-size: clamp(3em, 8vw, 7em); /* Responsivo e grande */
+    color: var(--text-light);
+    text-transform: uppercase; /* Caixa alta */
+    margin-bottom: var(--spacing-sm);
+    max-width: 70%; [cite_start]/* Título ocupa cerca de 70% da largura útil [cite: 19] */
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-family: var(--font-primary);
+    font-size: clamp(1em, 2vw, 1.5em);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-lg); [cite_start]/* Espaçamento de aproximadamente 60px [cite: 20] */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: transparent;
+    color: var(--text-light);
+    border: 2px solid var(--text-light);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--text-light); [cite_start]/* Leve efeito de hover: mudança de cor [cite: 26] */
+    color: var(--background-dark);
+}
+
+/* Seção Sobre (Exemplo - Comentar ou Remover se não for usada) */
+/*
+.about-section {
+    background-color: var(--background-dark);
+    padding: 100px var(--margin-sides);
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    font-size: 2.5em;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-light);
+}
+
+.about-content p {
+    margin-bottom: var(--spacing-sm);
+}
+
+.about-image {
+    flex: 0.7;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.read-more-button {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-top: var(--spacing-md);
+    transition: background-color 0.3s ease;
+}
+
+.read-more-button:hover {
+    background-color: darken(var(--accent-color), 10%);
+}
+*/
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    background-color: var(--background-dark);
+    color: rgba(250, 248, 243, 0.7); /* Branco creme com um pouco de transparência */
+    font-size: 0.9em;
+}
+
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .header {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .navbar {
+        padding: 0 var(--spacing-md);
+    }
+
+    .home-section {
+        padding: 0 var(--spacing-md);
+    }
+
+    .main-message {
+        font-size: clamp(2.5em, 10vw, 6em);
+        max-width: 90%;
+    }
+
+    .subtitle {
+        font-size: clamp(0.9em, 2.5vw, 1.3em);
+    }
+
+    /* Menu hambúrguer aparece */
+    .hamburger-menu {
+        display: block;
+    }
+
+    .nav-links {
+        display: none; /* Escondido por padrão em mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(62, 61, 60, 0.95);
+        padding-top: 80px;
+        align-items: center;
+        justify-content: flex-start;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%); /* Fora da tela */
+    }
+
+    .nav-links.active {
+        display: flex;
+        transform: translateX(0); /* Entra na tela */
+    }
+
+    .nav-links li {
+        margin: var(--spacing-md) 0;
+    }
+
+    .nav-links a {
+        font-size: 24px;
+    }
+
+    /* Ajuste para o botão do hambúrguer quando o menu está ativo */
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* .about-section {
+        flex-direction: column;
+        padding: 50px var(--spacing-md);
+    } */
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: var(--spacing-sm) var(--spacing-sm);
+    }
+    .main-message {
+        font-size: clamp(2em, 12vw, 5em);
+    }
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    /* .about-section {
+        padding: 40px var(--spacing-sm);
+    } */
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simone Logo Design - Portfólio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">SIMONE</div>
+            <button class="hamburger-menu" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#" class="active">HOME</a></li>
+                <li><a href="#sobre">SOBRE</a></li>
+                <li><a href="#trabalho">TRABALHO</a></li>
+                <li><a href="#loja">LOJA</a></li>
+                <li><a href="#blog">BLOG</a></li>
+                <li><a href="#contato">CONTATO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="home-section">
+        <h1 class="main-message">MAIS QUE LOGOTIPOS.<br>IDENTIDADES.</h1>
+        <p class="subtitle">Crio marcas que falam, conectam e permanecem.</p>
+        <a href="#trabalho" class="cta-button">VER PORTFÓLIO →</a>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Simone Logo Design. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // JavaScript para o menu hambúrguer (funcionalidade básica de toggle)
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburgerMenu) {
+            hamburgerMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburgerMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
